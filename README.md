@@ -1,5 +1,5 @@
 # Pre-processing
-https://drive.google.com/file/d/1M__dwuk5AycMcA20g0ECIdrpHOrgqCj6/view?usp=sharing
+
 
 3DGS 기반으로 진행된 연구이며 전처리 관련 코드만 있으므로 
 실행및 결과 확인은 3DGS를 실행 해주셔야 합니다.
