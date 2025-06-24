@@ -1,8 +1,11 @@
 # Pre-processing
 3DGS 기반으로 진행된 연구이며 전처리 관련 코드만 있으므로 
-실행및 결과 확인은 3DGS를 실행 해주셔야 합니다
+실행및 결과 확인은 3DGS를 실행 해주셔야 합니다.
 
-주소 변경 일일히 해주셔야 합니다
+dataset의 경우 NeRF_LEGO dataset을 사용했습니다.
+
+코드 내부 연결하고자 하는
+주소 변경 일일히 해주셔야 합니다.
 
 1번 프로그램은 2번 3번 프로그램 내부에 다 들어가 있으며
 
@@ -21,4 +24,4 @@ ConfigArgParse              1.7
 ![Image](https://github.com/user-attachments/assets/dc783bc6-10dc-44ee-87d4-23f9653a15fa)
 
 결과는 다음과 같이 나오며 1번 SfM Point Filtering , 2번 Point_Sampling 를 
-동시에 사용했을시 성능이 좋게 나오는걸 확인했습니다.
+동시에 사용했을시 기존 3DGS를 그냥 사용하였을때 보다 성능이 좋게 나오는걸 확인했습니다.
