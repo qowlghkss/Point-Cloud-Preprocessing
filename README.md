@@ -42,7 +42,10 @@ ConfigArgParse              1.7
 내용은 다음 논문에 정리 해뒀습니다
 https://drive.google.com/file/d/1M__dwuk5AycMcA20g0ECIdrpHOrgqCj6/view?usp=sharing
 
-----
+
+
+
+---
 PSNR,SSIM,LPIPS 측정을 위의 코드를 이용했으며 위 코드를 사용하기 위해서는 해당 패키지 추가 설치가 필요합니다.
 ```python
 lpips                       0.1.4
