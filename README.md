@@ -33,6 +33,7 @@ ConfigArgParse              1.7
 ![Image](https://github.com/user-attachments/assets/6079553d-73af-41b6-a249-a9c18538ff6f)
 
 각각 순서대로 Ground truth,  Original 3DGS,   OURs(updata,updata2 사용) 입니다.
+
 결과는 다음과 같이 나오며 updata,updata2를 
 동시에 사용했을때 기존 3DGS를 그냥 사용하였을때 보다 성능이 좋게 나오는걸 확인했습니다.
 
