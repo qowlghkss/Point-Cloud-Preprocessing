@@ -21,7 +21,7 @@ numpy                       1.21.6
 ConfigArgParse              1.7
 ```
 
-![Image](https://github.com/user-attachments/assets/dc783bc6-10dc-44ee-87d4-23f9653a15fa)
+![Image](https://github.com/user-attachments/assets/6079553d-73af-41b6-a249-a9c18538ff6f)
 
 결과는 다음과 같이 나오며 1번 SfM Point Filtering , 2번 Point_Sampling 를 
 동시에 사용했을시 기존 3DGS를 그냥 사용하였을때 보다 성능이 좋게 나오는걸 확인했습니다.
