@@ -27,3 +27,8 @@ ConfigArgParse              1.7
 
 결과는 다음과 같이 나오며 1번 SfM Point Filtering , 2번 Point_Sampling 를 
 동시에 사용했을시 기존 3DGS를 그냥 사용하였을때 보다 성능이 좋게 나오는걸 확인했습니다.
+
+
+내용은 다음 논문에 정리 해뒀습니다
+https://drive.google.com/file/d/1M__dwuk5AycMcA20g0ECIdrpHOrgqCj6/view?usp=sharing
+
