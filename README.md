@@ -26,12 +26,24 @@ numpy                       1.21.6
 ConfigArgParse              1.7
 ```
 
+
+
+실행결과
+----
 ![Image](https://github.com/user-attachments/assets/6079553d-73af-41b6-a249-a9c18538ff6f)
 
 결과는 다음과 같이 나오며 1번 SfM Point Filtering , 2번 Point_Sampling 를 
 동시에 사용했을시 기존 3DGS를 그냥 사용하였을때 보다 성능이 좋게 나오는걸 확인했습니다.
 
-
+논문
+----
 내용은 다음 논문에 정리 해뒀습니다
 https://drive.google.com/file/d/1M__dwuk5AycMcA20g0ECIdrpHOrgqCj6/view?usp=sharing
 
+----
+PSNR,SSIM,LPIPS 측정을 위의 코드를 이용했으며 위 코드를 사용하기 위해서는 해당 패키지 추가 설치가 필요합니다.
+```python
+lpips                       0.1.4
+torchvision                 0.13.1
+opencv-python               4.4.0.46
+```
