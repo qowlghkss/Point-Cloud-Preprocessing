@@ -37,6 +37,14 @@ ConfigArgParse              1.7
 결과는 다음과 같이 나오며 updata,updata2를 
 동시에 사용했을때 기존 3DGS를 그냥 사용하였을때 보다 성능이 좋게 나오는걸 확인했습니다.
 
+실행
+---
+실행,렌더링 명령어는 다음과 같습니다
+```python
+python train.py   --source_path (이미지와ply파일json파일등이 들어 가있는 곳)   --model_path (저장할곳)   --images (train 이미지 위치)   --iterations 20000   --checkpoint_iterations 10000   --save_iterations 10000 
+ 1614  time python render.py  --model_path (train이 저정된곳)   --images (train 이미지 위치)   --resolution 1024   --iteration 10000
+```
+
 논문
 ----
 내용은 다음 논문에 정리 해뒀습니다
