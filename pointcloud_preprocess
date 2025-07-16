@@ -1,0 +1,73 @@
+import numpy as np
+import open3d as o3d
+from scipy.spatial import KDTree
+
+# Step 1: PLY 파일 로드
+def load_ply(file_path):
+    pcd = o3d.io.read_point_cloud(file_path)
+    return pcd
+
+# Step 2: Outlier Removal 적용
+def filter_outliers(pcd, nb_neighbors=20, std_ratio=2.0, radius=0.05, min_neighbors=5):
+    # Statistical Outlier Removal (SOR)
+    pcd_filtered, ind = pcd.remove_statistical_outlier(nb_neighbors=nb_neighbors, std_ratio=std_ratio)
+    
+    # Radius Outlier Removal (ROR)
+    pcd_filtered, ind = pcd_filtered.remove_radius_outlier(nb_points=min_neighbors, radius=radius)
+    
+    return pcd_filtered
+
+# Step 3: 과밀 영역 정리 (Voxel Downsampling)
+def downsample_points(pcd, voxel_size=0.01):
+    pcd_downsampled = pcd.voxel_down_sample(voxel_size=voxel_size)
+    return pcd_downsampled
+
+# Step 4: Sparse Point Densification (KNN 기반 보간)
+def densify_points(pcd, num_samples=5000):
+    points = np.asarray(pcd.points)
+    tree = KDTree(points)
+    new_points = []
+    
+    for _ in range(num_samples):
+        idx = np.random.randint(0, len(points))  # 랜덤 포인트 선택
+        neighbors = tree.query(points[idx], k=4)[1]  # 가장 가까운 3개 이웃 찾기
+        if len(neighbors) < 4:
+            continue
+        
+        # 기존 포인트들 평균값을 새로운 포인트로 추가
+        new_point = np.mean(points[neighbors], axis=0)
+        new_points.append(new_point)
+    
+    new_points = np.array(new_points)
+    
+    # 새로운 포인트들을 기존 포인트 클라우드에 추가
+    all_points = np.vstack((points, new_points))
+    new_pcd = o3d.geometry.PointCloud()
+    new_pcd.points = o3d.utility.Vector3dVector(all_points)
+    
+    return new_pcd
+
+# Step 5: PLY 파일 저장
+def save_ply(file_path, pcd):
+    o3d.io.write_point_cloud(file_path, pcd)
+
+# 실행 예시
+input_ply_path = "/home/jihwan/study/25sum/pregs/original/input.ply"  # 원본 PLY 파일 경로
+output_ply_path = "/home/jihwan/study/25sum/viewaware/output_ply/outputpoint2.ply"
+
+# Load PLY
+pcd = load_ply(input_ply_path)
+
+# Apply filtering
+filtered_pcd = filter_outliers(pcd)
+
+# Apply downsampling (균등 샘플링)
+downsampled_pcd = downsample_points(filtered_pcd)
+
+# Apply densification (포인트 추가)
+densified_pcd = densify_points(downsampled_pcd)
+
+# Save as PLY
+save_ply(output_ply_path, downsampled_pcd)
+
+print(f"Filtered, downsampled, and densified point cloud saved to {densified_pcd}")
